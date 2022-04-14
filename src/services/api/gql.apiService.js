@@ -35,7 +35,7 @@ export const COLLECTION_GROUPS = gql`
   query digitalaxF3MCollectionGroups {
     digitalaxF3MCollectionGroups(first: 100) {
       id
-      collections(where: { id_not: "0" }) {
+      collections {
         id
         rarity
         garments(first: 1000) {

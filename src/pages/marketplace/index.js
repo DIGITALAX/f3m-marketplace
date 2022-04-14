@@ -19,13 +19,13 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchCollectionGroups = async () => {
       setLoading(true);
-      const { digitalaxF3MCollectionGroup } = await getCollectionGroups(
+      const { digitalaxF3MCollectionGroups } = await getCollectionGroups(
         chainId
       );
 
       const collections = [];
 
-      const sortedCollectionGroups = digitalaxF3MCollectionGroup.sort(
+      const sortedCollectionGroups = digitalaxF3MCollectionGroups.sort(
         (a, b) => {
           if (parseInt(a.id) > parseInt(b.id)) return -1;
           if (parseInt(a.id) === parseInt(b.id)) return 0;

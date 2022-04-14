@@ -285,29 +285,26 @@ class BidActions extends BaseActions {
     };
   }
 
-  buyNow(id, value, isMona) {
+  buyNow(id, value, isMona, crypto) {
     return async (_, getState) => {
       const account = getState().user.get("account");
       const chainId = getState().global.get("chainId");
-      console.log({ account });
       const marketplaceContract = await getMarketplaceContractAddressByChainId(
         chainId
       );
+      const paymentTokenContractAddress = tokens[crypto].address;
+      const paymentTokenContract = await getCryptoPaymentTokenContract(crypto);
       const contract = await getMarketplaceContract(chainId);
-      if (isMona) {
-        const monaContractAddress = await getMonaContractAddressByChainId(
-          chainId
-        );
-        const monaContract = await getMonaTokenContract(monaContractAddress);
-        const allowedValue = await monaContract.methods
+      if (isMona && crypto !== "matic") {
+        const allowedValue = await paymentTokenContract.methods
           .allowance(account, marketplaceContract)
           .call({ from: account });
         const jsAllowedValue = parseFloat(
           ethersUtils.formatEther(allowedValue)
         );
-        if (jsAllowedValue < 10000000000) {
-          const listener = monaContract.methods
-            .approve(marketplaceContract, convertToWei(20000000000))
+        if (jsAllowedValue < 10) {
+          const listener = paymentTokenContract.methods
+            .approve(marketplaceContract, convertToWei(20))
             .send({ from: account });
           const promise = new Promise((resolve, reject) => {
             listener.on("error", (error) => reject(error));
@@ -324,9 +321,9 @@ class BidActions extends BaseActions {
           };
         }
       }
-      console.log({ contract });
-      console.log({ id });
-      const listener = contract.methods.buyOffer(id).send({ from: account });
+      const listener = contract.methods
+        .buyOffer(id, paymentTokenContractAddress, 0, 0)
+        .send({ from: account });
       const promise = new Promise((resolve, reject) => {
         listener.on("error", (error) => reject(error));
         listener.on("confirmation", (transactionHash) =>

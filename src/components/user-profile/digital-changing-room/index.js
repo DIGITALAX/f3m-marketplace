@@ -38,7 +38,7 @@ import {
 import digitalaxApi from "@services/api/espa/api.service";
 import { getEnabledNetworkByChainId } from "@services/network.service";
 
-import { getChainId } from "@selectors/global.selectors";
+import { getAllDesigners, getChainId } from "@selectors/global.selectors";
 
 import { filterOrders, generateLookImage, getRarityId } from "@utils/helpers";
 
@@ -69,6 +69,8 @@ import {
 import { MAINNET_CHAINID, POLYGON_CHAINID } from "@constants/global.constants";
 import { getAllItemsByOwner } from "@services/api/rarible.service";
 import SecondaryImageCard from "@components/secondary-image-card";
+import { getAccount } from "@selectors/user.selectors";
+import { getRaribleNftDataFromMeta } from "@utils/rarible";
 
 const categories = [
   DIGITAL_CHANGING_ROOM,
@@ -88,6 +90,8 @@ const DigitalChangingRoom = (props) => {
   const chainId = useSelector(getChainId);
   const [currentCategory, setCurrentCategory] = useState(0);
   const [ownedNFTs, setOwnedNFTs] = useState([]);
+  const account = useSelector(getAccount);
+  const allDesigners = useSelector(getAllDesigners).toJS();
   const [ownedOrders, setOwnedOrders] = useState([]);
   const showPerPage = 10;
 

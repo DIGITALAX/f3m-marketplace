@@ -126,8 +126,9 @@ const MyApp = ({ Component, pageProps, store, err }) => {
         <Modals />
         <NetworkWrapper>
           <LoadingWrapper>
-            {router.pathname.includes("bridge") ? <Particles /> : null}
-            <Component {...pageProps} />
+            <div style={{ minHeight: "100vh", background: "#ffef62" }}>
+              <Component {...pageProps} />
+            </div>
           </LoadingWrapper>
         </NetworkWrapper>
         <Footer />
