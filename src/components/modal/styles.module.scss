@@ -1,5 +1,8 @@
 @import "../../assets/scss/helpers/helpers.scss";
 
+$bgColor: #4E4AFF;
+$fontColor: #FFEF62;
+
 .wrapper {
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
@@ -12,24 +15,22 @@
 }
 
 .modal {
-  background-color: #e6bf00;
+  background-color: $bgColor;
   padding: 48px;
   position: relative;
   max-width: 840px;
   margin: 200px auto;
   word-break: break-word;
-  background-image: url("/images/metaverse/modal_texture.png");
   background-size: 100%;
-  border: 2px solid #e7c20d;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 30px 10px #e6bf00;
 
-  & p,
+  & p {
+    font-family: 'Newyork';
+  }
   & span,
   & button,
   & a {
     color: black !important;
-    font-family: Bebas Neue;
+    font-family: 'Newyork';
   }
 
   & button {
@@ -52,15 +53,22 @@
   position: absolute;
   right: 32px;
   top: 32px;
+  width: 30px;
+  height: 30px;
   font-size: 30px;
-  background: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: $fontColor !important;
 }
 
 .title {
-  font-size: 2rem;
-  line-height: 24px;
-  font-weight: bold;
+  color: $fontColor;
+  font-size: 32px;
+  line-height: 32px;
   margin-bottom: 44px;
+  text-align: center;
 }
 
 .modalBodyText {
