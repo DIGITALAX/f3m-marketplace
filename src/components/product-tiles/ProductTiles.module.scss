@@ -1,0 +1,37 @@
+@import '../../assets/scss/helpers/grid.scss';
+
+.wrapper {
+  width: 100%;
+  background-color: transparent;
+  min-height: 5vw;
+  max-height: 60vw;
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  .tileWrapper {
+    width: 10%;
+    cursor: pointer;
+    transition: 0.3s all;
+    &:hover {
+      z-index: 10;
+      transition: 0.3s all;
+      transform-origin: 50% 50%;
+      transform: scale(1.3);
+    }
+
+    .tileImage {
+      object-fit: cover;
+    }
+    // height: 100px;
+
+    @include lg-width {
+      width: 5%;
+    }
+  }
+
+  @include lg-width {
+    max-height: 20vw;  
+  }
+}

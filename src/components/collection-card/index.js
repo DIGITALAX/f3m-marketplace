@@ -5,21 +5,16 @@ import CollectionInfoCard from "./collection-info-card";
 import styles from "./styles.module.scss";
 
 const CollectionCard = ({ collection }) => {
-  const collectionNames = [
-    "",
-    "Realm Runway #1: NY Fashion Week",
-    "IRL Genesis One",
-    "IRL Genesis Two",
-    "Kinesthetic Kind",
-    "Models of the Realms",
-  ];
 
+  console.log('collection: ', collection)
   return (
     <>
       <div className={styles.wrapper}>
-        <div className={styles.title}>
-          {collectionNames[parseInt(collection?.id)]}
-        </div>
+        <Link href={`/marketplace/all/${collection.id}`}>
+          <a className={styles.title}>
+            {collection.name}
+          </a>
+        </Link>
         <div className={styles.imageWrapper}>
           {collection?.id !== "15" &&
           collection.endTime &&

@@ -22,6 +22,7 @@ import digitalaxApi from "@services/api/espa/api.service";
 import { getEnabledNetworkByChainId } from "@services/network.service";
 import config from "@utils/config";
 import SecondaryInfoCard from "@components/secondary-info-card";
+import ProductTiles from "@components/product-tiles";
 
 const LandingPage = () => {
   const chainId = useSelector(getChainId);
@@ -192,6 +193,12 @@ const LandingPage = () => {
         />
       </Head>
       <section className={styles.homeHeroSection}>
+        <img
+          className={styles.headerImage}
+          src="/images/header.jpg"
+          alt="banner-header"
+        />
+        <div className={styles.overlay} />
         <div className={styles.leftWrapper}>
           <h1 className={styles.title}>
             F<sub>3</sub>Manifesto
@@ -218,7 +225,7 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-
+      <ProductTiles products={filteredNfts} />
       <Container>
         <section className={styles.collectionsWrapper}>
           {sortProducts(filteredNfts).map((prod) => {
@@ -227,6 +234,7 @@ const LandingPage = () => {
               return (
                 <>
                   <ProductInfoCard
+                    key={prod.id}
                     product={prod}
                     price={prod.auction ? prod.topBid : prod.primarySalePrice}
                     sold={prod.sold}

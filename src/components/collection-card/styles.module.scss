@@ -19,38 +19,20 @@ $backColor: #FFEF62;
   margin: auto;
   margin-bottom: 0;
   width: 300px;
+  display: flex;
+  flex-direction: column;
 
   .title {
     font-family: $titleFontFamily;
     font-style: normal;
     font-weight: 800;
-    line-height: 44px;
+    line-height: 150%;
     position: relative;
     margin-bottom: 1rem;
-    padding: 0 2rem;
-
     color: $titleColor;
 
-    @media (min-width: 1440px) {
-      font-size: 35px;
-    }
-
-    @media (max-width: 1440px) {
-      font-size: 30px;
-    }
-
-    @media (max-width: 1200px) {
-      font-size: 26px;
-    }
-
-    @media (max-width: 920px) {
-      font-size: 20px;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 20px;
-      padding: 1rem 1rem;
-    }
+    font-size: 30px;
+    padding: 0;
   }
 
   .designerWrapper {

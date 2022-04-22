@@ -37,10 +37,29 @@ $borderColor: #4E4AFF;
       padding-bottom: 7.5rem;
     }
 
+    .headerImage {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      background: rgba(255, 239, 98, 0.9);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;      
+    }
+
     .leftWrapper {
       width: 100%;
       display: flex;
       justify-content: center;
+      z-index: 1;
 
       .title {
         font-family: 'NewYork';
@@ -105,6 +124,7 @@ $borderColor: #4E4AFF;
       width: 100%;
       padding-bottom: 40px;
       border-bottom: 1px solid $borderColor;
+      z-index: 1;
 
       @media (max-width: 768px) {
         width: 100%;

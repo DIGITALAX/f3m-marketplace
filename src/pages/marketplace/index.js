@@ -75,7 +75,7 @@ const LandingPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <HeroSection filter setFilter={(e) => setFilter(e)} />
+      <HeroSection filter={''} setFilter={(e) => setFilter(e)} />
 
       <section className={styles.collectionSection}>
         <div className={styles.collectionWrapper}>

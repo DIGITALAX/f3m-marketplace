@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 
 const CollectionList = ({ items }) => {
+  console.log('collections: ', items)
   return (
     <>
       <div className={styles.wrapper}>

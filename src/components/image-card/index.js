@@ -267,9 +267,19 @@ const ImageCard = ({
     <>
       <div className={styles.imageCardWrapper}>
         {showCollectionName ? (
-          <div className={styles.collectionName}>
-            {data?.garment ? data.garment.name : data.name}
-          </div>
+          <Link
+            href={
+              imgLink
+                ? imgLink
+                : `/product/${data?.id}/${getRarityId(data?.rarity)}/${
+                    isAuction ? 1 : 0
+                  }`
+            }
+          >
+            <a className={styles.collectionName}>
+              {data?.garment ? data.garment.name : data.name}
+            </a>
+          </Link>
         ) : null}
         {showDesigner ? (
           <a

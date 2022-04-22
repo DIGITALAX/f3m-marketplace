@@ -17,8 +17,8 @@ $backColor: #4E4AFF;
   @include transition();
 
   @include sm-width {
-    width: 200px;
-    min-width: 200px;
+    width: 180px;
+    min-width: 180px;
   }
 
   img {
@@ -28,7 +28,8 @@ $backColor: #4E4AFF;
   div {
     text-transform: uppercase;
     // font-style: italic;
-    font-size: 1.5rem;
+    // font-size: 1.5rem;
+    font-size: 20px;
     font-weight: 600;
     font-family: $fontFamily;
     line-height: 120%;
